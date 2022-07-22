@@ -55,7 +55,7 @@ namespace :bundler do
     DESC
   task install: :config do
     on fetch(:bundle_servers) do
-      within release_path do
+      within fetch(:bundle_exec_path, release_path) do
         with fetch(:bundle_env_variables) do
           if fetch(:bundle_check_before_install) && test(:bundle, :check)
             info "The Gemfile's dependencies are satisfied, skipping installation"
